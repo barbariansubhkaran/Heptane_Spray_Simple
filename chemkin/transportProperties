@@ -1,0 +1,48 @@
+FoamFile
+{
+	version	2.0;
+	format	ascii;
+	class	dictionary;
+	location	"chemkin";
+	object	transportProperties;
+}
+C7H16
+{
+	transport
+	{
+		As	1.67212E-6;
+		Ts	170.672;
+	}
+}
+O2
+{
+	transport
+	{
+		As	1.67212E-6;
+		Ts	170.672;
+	}
+}
+N2
+{
+	transport
+	{
+		As	1.67212E-6;
+		Ts	170.672;
+	}
+}
+CO2
+{
+	transport
+	{
+		As	1.67212E-6;
+		Ts	170.672;
+	}
+}
+H2O
+{
+	transport
+	{
+		As	1.67212E-6;
+		Ts	170.672;
+	}
+}

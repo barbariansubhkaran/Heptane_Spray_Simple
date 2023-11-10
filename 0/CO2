@@ -1,0 +1,22 @@
+FoamFile
+{
+	version	2.0;
+	format	binary;
+	class	volScalarField;
+	location	"0";
+	object	CO2;
+	arch	"LSB;label=32;scalar=64";
+}
+dimensions	[0 0 0 0 0 0 0];
+internalField	uniform 0.0;
+boundaryField
+{
+	symmetry
+	{
+		type	symmetry;
+	}
+	cylinder
+	{
+		type	zeroGradient;
+	}
+}

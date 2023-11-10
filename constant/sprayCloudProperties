@@ -1,0 +1,152 @@
+FoamFile
+{
+	version	2.0;
+	class	dictionary;
+	format	ascii;
+	location	"constant";
+	object	sprayCloudProperties;
+}
+solution
+{
+	active	true;
+	coupled	true;
+	averagingMethod	basic;
+	transient	true;
+	maxCo	0.3;
+	cellValueSourceCorrection	false;
+	sourceTerms
+	{
+		schemes
+		{
+			rho	explicit 1.0;
+			Yi	explicit 1.0;
+			h	explicit 1.0;
+			U	explicit 1.0;
+			radiation	explicit 1.0;
+		}
+	}
+	interpolationSchemes
+	{
+		p	cell;
+		T	cell;
+		U	cellPoint;
+		rho	cell;
+		thermo:mu	cell;
+		kappa	cell;
+		Cp	cell;
+	}
+	integrationSchemes
+	{
+		T	analytical;
+		U	Euler;
+	}
+}
+constantProperties
+{
+	T0	300.0;
+	Cp0	4200;
+	rho0	1000.0;
+	constantVolume	false;
+}
+subModels
+{
+	injectionModels
+	{
+		injector_1
+		{
+			type	coneNozzleInjection;
+			outerDiameter	1.0E-4;
+			Cd	0.9;
+			massTotal	1.0E-4;
+			thetaInner	0.0;
+			thetaOuter	40.0;
+			nParticle	10;
+			SOI	0.0;
+			flowRateProfile	1.0;
+			duration	0.001;
+			Pinj	1000000.0;
+			parcelsPerSecond	10000000;
+			massFlowRate	0.0;
+			parcelBasisType	mass;
+			UMag	100.0;
+			position	(0.001 0.001 0.013);
+			innerDiameter	0.0;
+			injectionMethod	disc;
+			flowType	constantVelocity;
+			direction	(1.0 1.0 0.35);
+			sizeDistribution
+			{
+				type	RosinRammler;
+				RosinRammlerDistribution
+				{
+					minValue	1.0E-5;
+					d	1.0E-4;
+					maxValue	2.0E-4;
+					n	4.0;
+				}
+			}
+		}
+	}
+	compositionModel	singlePhaseMixture;
+	singlePhaseMixtureCoeffs
+	{
+		phases	
+		(
+			liquid
+			{
+				C7H16		1.0;
+			}
+		);
+	}
+	phaseChangeModel	liquidEvaporationBoil;
+	collisionModel	none;
+	dispersionModel	none;
+	devolatilisationModel	none;
+	heatTransferModel	RanzMarshall;
+	stochasticCollisionModel	none;
+	breakupModel	none;
+	isotropyModel	none;
+	radiation	false;
+	surfaceReactionModel	none;
+	dampingModel	none;
+	atomizationModel	none;
+	surfaceFilmModel	none;
+	liquidEvaporationBoilCoeffs
+	{
+		enthalpyTransfer	enthalpyDifference;
+	}
+	RanzMarshallCoeffs
+	{
+		BirdCorrection	true;
+	}
+	particleForces
+	{
+		gravity	;
+		sphereDrag	;
+	}
+	patchInteractionModel	localInteraction;
+	localInteractionCoeffs
+	{
+		patches	
+		(
+			symmetry
+			{
+				type	rebound;
+			}
+			cylinder
+			{
+				type	rebound;
+				e	1.0;
+				mu	0.0;
+			}
+		);
+	}
+	liquidEvaporationBoilCoeffs
+	{
+		enthalpyTransfer	enthalpyDifference;
+		activeLiquids	( C7H16 );
+	}
+}
+cloudFunctions
+{
+}

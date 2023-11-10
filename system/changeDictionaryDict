@@ -1,0 +1,177 @@
+FoamFile
+{
+	version	2.0;
+	format	binary;
+	class	dictionary;
+	location	"system";
+	object	changeDictionaryDict;
+}
+p
+{
+	boundaryField
+	{
+		symmetry
+		{
+			type	symmetry;
+		}
+		cylinder
+		{
+			type	zeroGradient;
+		}
+	}
+}
+U
+{
+	boundaryField
+	{
+		symmetry
+		{
+			type	symmetry;
+		}
+		cylinder
+		{
+			type	noSlip;
+		}
+	}
+}
+T
+{
+	boundaryField
+	{
+		symmetry
+		{
+			type	symmetry;
+		}
+		cylinder
+		{
+			type	zeroGradient;
+		}
+	}
+}
+k
+{
+	boundaryField
+	{
+		symmetry
+		{
+			type	symmetry;
+		}
+		cylinder
+		{
+			type	kqRWallFunction;
+		}
+	}
+}
+epsilon
+{
+	boundaryField
+	{
+		symmetry
+		{
+			type	symmetry;
+		}
+		cylinder
+		{
+			type	epsilonWallFunction;
+		}
+	}
+}
+nut
+{
+	boundaryField
+	{
+		symmetry
+		{
+			type	symmetry;
+		}
+		cylinder
+		{
+			type	nutUWallFunction;
+		}
+	}
+}
+alphat
+{
+	boundaryField
+	{
+		symmetry
+		{
+			type	symmetry;
+		}
+		cylinder
+		{
+			type	compressible::alphatJayatillekeWallFunction;
+			Prt	0.85;
+		}
+	}
+}
+C7H16
+{
+	boundaryField
+	{
+		symmetry
+		{
+			type	symmetry;
+		}
+		cylinder
+		{
+			type	zeroGradient;
+		}
+	}
+}
+O2
+{
+	boundaryField
+	{
+		symmetry
+		{
+			type	symmetry;
+		}
+		cylinder
+		{
+			type	zeroGradient;
+		}
+	}
+}
+N2
+{
+	boundaryField
+	{
+		symmetry
+		{
+			type	symmetry;
+		}
+		cylinder
+		{
+			type	zeroGradient;
+		}
+	}
+}
+CO2
+{
+	boundaryField
+	{
+		symmetry
+		{
+			type	symmetry;
+		}
+		cylinder
+		{
+			type	zeroGradient;
+		}
+	}
+}
+H2O
+{
+	boundaryField
+	{
+		symmetry
+		{
+			type	symmetry;
+		}
+		cylinder
+		{
+			type	zeroGradient;
+		}
+	}
+}

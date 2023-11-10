@@ -1,0 +1,87 @@
+FoamFile
+{
+	class	dictionary;
+	format	ascii;
+	location	system;
+	object	controlDict;
+	version	2.0;
+}
+adjustTimeStep	false;
+application	sprayFoam;
+deltaT	5e-06;
+endTime	5e-03;
+maxCo	2;
+maxDeltaT	1;
+purgeWrite	0;
+startFrom	latestTime;
+startTime	0;
+stopAt	endTime;
+timeFormat	general;
+timePrecision	6;
+writeControl	adjustableRunTime;
+writeInterval	5e-05;
+writePrecision	7;
+runTimeModifiable	true;
+compression	uncompressed;
+writeFormat	binary;
+libs	("libfvMotionSolvers.so" "libturbulenceModels.so" "libturbulenceModelSchemes.so");
+functions
+{
+	writeExtraFields
+	{
+		libs	("libutilityFunctionObjects.so");
+		objects	(rho);
+		type	writeObjects;
+		writeOption	anyWrite;
+		enabled	true;
+		log	true;
+		writeControl	writeTime;
+	}
+	minMonitorInAllOfDefault
+	{
+		libs	("libfieldFunctionObjects.so");
+		operation	min;
+		regionType	all;
+		type	all;
+		type	volFieldValue;
+		valueOutput	false;
+		writeFields	false;
+		fields	(T);
+		enabled	true;
+		log	true;
+	}
+	maxMonitorInAllOfDefault
+	{
+		libs	("libfieldFunctionObjects.so");
+		operation	max;
+		regionType	all;
+		type	all;
+		type	volFieldValue;
+		valueOutput	false;
+		writeFields	false;
+		fields	(T);
+		enabled	true;
+		log	true;
+	}
+	volAverageMonitorInAllOfDefault
+	{
+		libs	("libfieldFunctionObjects.so");
+		operation	volAverage;
+		regionType	all;
+		type	all;
+		type	volFieldValue;
+		valueOutput	false;
+		writeFields	false;
+		fields	(T);
+		enabled	true;
+		log	true;
+	}
+}
+OptimisationSwitches
+{
+	fileHandler	uncollated;
+	fileModificationSkew	0;
+	maxMasterFileBufferSize	1.0E9;
+	maxThreadFileBufferSize	1.0E9;
+	mpiBufferSize	200000000;
+}

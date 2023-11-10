@@ -1,0 +1,23 @@
+FoamFile
+{
+	version	2.0;
+	class	dictionary;
+	format	ascii;
+	location	"constant";
+	object	viewFactorsDict;
+}
+writeViewFactorMatrix	true;
+writeFacesAgglomeration	true;
+writePatchViewFactors	false;
+maxDynListLength	1000000;
+facesPerCluster	5;
+cylinder
+{
+	nFacesInCoarsestLevel	1043;
+	featureAngle	20.0;
+}
+symmetry
+{
+	nFacesInCoarsestLevel	392;
+	featureAngle	20.0;
+}

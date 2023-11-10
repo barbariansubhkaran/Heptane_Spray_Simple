@@ -1,0 +1,219 @@
+FoamFile
+{
+	version	2.0;
+	class	dictionary;
+	format	ascii;
+	location	"system";
+	object	fvSolution;
+}
+solvers
+{
+	p
+	{
+		solver	GAMG;
+		smoother	GaussSeidel;
+		relTol	1.0E-4;
+		cacheAgglomeration	true;
+		nFinestSweeps	2;
+		nPreSweeps	0;
+		maxIter	100;
+		nPostSweeps	1;
+		agglomerator	faceAreaPair;
+		nCellsInCoarsestLevel	10;
+		tolerance	1.0E-6;
+		mergeLevels	1;
+	}
+	pFinal
+	{
+		solver	GAMG;
+		smoother	GaussSeidel;
+		relTol	1.0E-4;
+		cacheAgglomeration	true;
+		nFinestSweeps	2;
+		nPreSweeps	0;
+		maxIter	100;
+		nPostSweeps	1;
+		agglomerator	faceAreaPair;
+		nCellsInCoarsestLevel	10;
+		tolerance	1.0E-6;
+		mergeLevels	1;
+		minIter	1;
+	}
+	U
+	{
+		solver	PBiCGStab;
+		relTol	1.0E-4;
+		preconditioner	DILU;
+		tolerance	1.0E-6;
+		maxIter	100;
+	}
+	UFinal
+	{
+		solver	PBiCGStab;
+		relTol	1.0E-4;
+		preconditioner	DILU;
+		tolerance	1.0E-6;
+		maxIter	100;
+		minIter	1;
+	}
+	h
+	{
+		solver	PBiCGStab;
+		relTol	1.0E-4;
+		preconditioner	DILU;
+		tolerance	1.0E-6;
+		maxIter	100;
+	}
+	hFinal
+	{
+		solver	PBiCGStab;
+		relTol	1.0E-4;
+		preconditioner	DILU;
+		tolerance	1.0E-6;
+		maxIter	100;
+		minIter	1;
+	}
+	rho
+	{
+		solver	PCG;
+		relTol	1.0E-4;
+		preconditioner	DIC;
+		tolerance	1.0E-6;
+		maxIter	100;
+	}
+	rhoFinal
+	{
+		solver	PCG;
+		relTol	1.0E-4;
+		preconditioner	DIC;
+		tolerance	1.0E-6;
+		maxIter	100;
+		minIter	1;
+	}
+	Yi
+	{
+		solver	PBiCGStab;
+		relTol	1.0E-4;
+		preconditioner	DILU;
+		tolerance	1.0E-6;
+		maxIter	100;
+	}
+	YiFinal
+	{
+		solver	PBiCGStab;
+		relTol	1.0E-4;
+		preconditioner	DILU;
+		tolerance	1.0E-6;
+		maxIter	100;
+		minIter	1;
+	}
+	k
+	{
+		solver	PBiCGStab;
+		relTol	1.0E-4;
+		preconditioner	DILU;
+		tolerance	1.0E-6;
+		maxIter	100;
+	}
+	kFinal
+	{
+		solver	PBiCGStab;
+		relTol	1.0E-4;
+		preconditioner	DILU;
+		tolerance	1.0E-6;
+		maxIter	100;
+		minIter	1;
+	}
+	epsilon
+	{
+		solver	PBiCGStab;
+		relTol	1.0E-4;
+		preconditioner	DILU;
+		tolerance	1.0E-6;
+		maxIter	100;
+	}
+	epsilonFinal
+	{
+		solver	PBiCGStab;
+		relTol	1.0E-4;
+		preconditioner	DILU;
+		tolerance	1.0E-6;
+		maxIter	100;
+		minIter	1;
+	}
+	Yi
+	{
+		solver	PBiCGStab;
+		relTol	1.0E-4;
+		preconditioner	DILU;
+		tolerance	1.0E-6;
+		maxIter	100;
+	}
+	YiFinal
+	{
+		solver	PBiCGStab;
+		relTol	1.0E-4;
+		preconditioner	DILU;
+		tolerance	1.0E-6;
+		maxIter	100;
+		minIter	1;
+	}
+}
+PIMPLE
+{
+	nCorrectors	1;
+	nNonOrthogonalCorrectors	1;
+	momentumPredictor	true;
+	transonic	false;
+	nOuterCorrectors	2;
+	residualControl
+	{
+		p
+		{
+			tolerance	1.0E-4;
+			relTol	0.0;
+		}
+		U
+		{
+			tolerance	1.0E-4;
+			relTol	0.0;
+		}
+		h
+		{
+			tolerance	1.0E-4;
+			relTol	0.0;
+		}
+		rho
+		{
+			tolerance	1.0E-4;
+			relTol	0.0;
+		}
+		Yi
+		{
+			tolerance	1.0E-4;
+			relTol	0.0;
+		}
+		k
+		{
+			tolerance	1.0E-4;
+			relTol	0.0;
+		}
+		epsilon
+		{
+			tolerance	1.0E-4;
+			relTol	0.0;
+		}
+		Yi
+		{
+			tolerance	1.0E-4;
+			relTol	0.0;
+		}
+	}
+	pRefCell	0;
+	pRefValue	100000.0;
+}
+relaxationFactors
+{
+	p	1.0;
+	U	1.0;
+}

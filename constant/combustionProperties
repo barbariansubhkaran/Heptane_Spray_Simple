@@ -1,0 +1,16 @@
+FoamFile
+{
+	version	2.0;
+	class	dictionary;
+	format	ascii;
+	location	"constant";
+	object	combustionProperties;
+}
+active	true;
+combustionModel	PaSR;
+PaSRCoeffs
+{
+	Cmix	1.0;
+	integrateReactionRate	true;
+	turbulentReaction	true;
+}

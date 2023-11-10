@@ -1,0 +1,24 @@
+FoamFile
+{
+	version	2.0;
+	format	binary;
+	class	volScalarField;
+	location	"0";
+	object	alphat;
+	arch	"LSB;label=32;scalar=64";
+}
+dimensions	[1 -1 -1 0 0 0 0];
+internalField	uniform 0.0;
+boundaryField
+{
+	symmetry
+	{
+		type	symmetry;
+	}
+	cylinder
+	{
+		type	compressible::alphatJayatillekeWallFunction;
+		value	uniform 0.0;
+		Prt	0.85;
+	}
+}

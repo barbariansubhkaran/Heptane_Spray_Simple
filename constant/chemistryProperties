@@ -1,0 +1,61 @@
+FoamFile
+{
+	version	2.0;
+	class	dictionary;
+	format	ascii;
+	location	"constant";
+	object	chemistryProperties;
+}
+chemistryType
+{
+	chemistryThermo	psi;
+	chemistrySolver	ode;
+	TDAC	false;
+}
+chemistry	true;
+initialChemicalTimeStep	1.0E-7;
+Treact	0.0;
+odeCoeffs
+{
+	solver	seulex;
+}
+reduction
+{
+	active	false;
+	log	true;
+	method	DAC;
+	tolerance	1.0E-4;
+	initialSet
+	{
+	}
+	automaticSIS	false;
+	fuelSpecies
+	{
+	}
+}
+tabulation
+{
+	active	false;
+	log	true;
+	printProportion	false;
+	printNumRetrieve	false;
+	method	ISAT;
+	tolerance	1.0E-4;
+	scaleFactor
+	{
+		otherSpecies	1.0;
+		Temperature	2500.0;
+		Pressure	9.9999999E14;
+		deltaT	1.0;
+	}
+	maxNLeafs	2000;
+	chPMaxLifeTime	100;
+	maxGrowth	10;
+	checkEntireTreeInterval	5;
+	maxDepthFactor	2.0;
+	minBalanceThreshold	30;
+	MRURetrieve	false;
+	maxMRUSize	0;
+	growPoints	true;
+	maxNumNewDim	10;
+}
